@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mundo Gráfico | Digitalizamos y hacemos crecer tu negocio</title>
+  <meta name="description" content="Genera crecimiento físico y digital para tu negocio con Mundo Gráfico. Solicita tu Diagnóstico de Crecimiento Gratuito.">
+  
+  <!-- SEO & Open Graph -->
+  <meta property="og:title" content="Mundo Gráfico | Hacemos crecer tu negocio">
+  <meta property="og:description" content="Estrategia y acompañamiento personalizado para tu empresa.">
+  <meta property="og:type" content="website">
+  
+  <!-- Preconnect & Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Icons FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Tailwind CSS (CDN para uso inmediato) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif']
+          },
+          colors: {
+            brand: {
+              blue: '#062B5F',
+              navy: '#031A3A',
+              orange: '#F59A1B',
+              amber: '#FDBA3B',
+              cream: '#FFF7E8',
+              gray: '#F8FAFC',
+              slate: '#475569',
+            }
+          },
+          boxShadow: {
+            'premium': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+            'premium-hover': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    /* Estilos y Animaciones Personalizadas */
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    /* Sistema de "Single Page Application" simulado */
+    .page-section {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+    }
+    .page-section.active {
+      display: block;
+      opacity: 1;
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .gradient-text {
+      background: linear-gradient(to right, #062B5F, #F59A1B);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    /* Premium Button Shine Effect */
+    .btn-shine {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-shine::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.7s ease;
+    }
+    .btn-shine:hover::after {
+      transform: translateX(100%);
+    }
+    /* Card Elevation & Border Glow */
+    .card-premium {
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .card-premium:hover {
+      transform: translateY(-8px);
+      border-color: rgba(245, 154, 27, 0.3);
+    }
+    /* Icon Float Animation */
+    .icon-float {
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .icon-float:hover {
+      transform: scale(1.1);
+    }
+    /* Image Zoom Smooth */
+    .img-zoom {
+      overflow: hidden;
+    }
+    .img-zoom img {
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .img-zoom:hover img {
+      transform: scale(1.05);
+    }
+    /* Subtle Gradient Overlays */
+    .gradient-overlay {
+      background: radial-gradient(circle at top right, rgba(245, 154, 27, 0.18), transparent 35%),
+                  radial-gradient(circle at bottom left, rgba(6, 43, 95, 0.12), transparent 35%);
+    }
+  </style>
+</head>
+<body class="bg-brand-cream text-brand-slate font-sans selection:bg-brand-orange selection:text-white">
+
+  <!-- Navegación Superior -->
+  <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        
+        <!-- Logo -->
+        <div class="flex-shrink-0 flex flex-col sm:flex-row items-center gap-2 sm:gap-3 cursor-pointer" onclick="navigate('inicio')">
+          <div class="h-10 w-10 sm:h-12 sm:w-12 rounded-full overflow-hidden bg-white flex items-center justify-center">
+            <img src="assets/logomundografico.png" alt="Mundo Gráfico" class="h-full w-full object-cover">
+          </div>
+          <span class="font-bold text-lg sm:text-2xl tracking-tight text-brand-blue">Mundo<span class="text-brand-orange">Gráfico</span></span>
+        </div>
+        
+        <!-- Menú Desktop -->
+        <div class="hidden md:flex space-x-6 items-center">
+          <a href="#" onclick="navigate('inicio')" class="text-sm font-medium text-brand-slate hover:text-brand-blue transition">Inicio</a>
+          <a href="#" onclick="navigate('servicios')" class="text-sm font-medium text-brand-slate hover:text-brand-blue transition">Servicios</a>
+          <a href="#" onclick="navigate('cotizaciones')" class="text-sm font-medium text-brand-slate hover:text-brand-blue transition">Cotizaciones</a>
+          <a href="#" onclick="navigate('nosotros')" class="text-sm font-medium text-brand-slate hover:text-brand-blue transition">Nosotros</a>
+          <a href="#" onclick="navigate('contacto')" class="text-sm font-medium text-brand-slate hover:text-brand-blue transition">Contacto</a>
+          <button onclick="navigate('diagnostico')" class="relative overflow-hidden bg-brand-orange text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-brand-amber transition shadow-lg shadow-orange-500/30 btn-shine">
+            <span class="relative z-10">Diagnóstico Gratuito</span>
+          </button>
+        </div>
+        
+        <!-- Botón Menú Móvil -->
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-btn" class="text-brand-blue focus:outline-none">
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Menú Móvil (Oculto por defecto) -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-white/10 absolute w-full shadow-xl">
+      <div class="px-4 pt-2 pb-6 space-y-1 flex flex-col">
+        <a href="#" onclick="navigate('inicio'); toggleMenu();" class="block px-3 py-3 text-base font-medium text-brand-slate border-b border-white/10">Inicio</a>
+        <a href="#" onclick="navigate('servicios'); toggleMenu();" class="block px-3 py-3 text-base font-medium text-brand-slate border-b border-white/10">Servicios</a>
+        <a href="#" onclick="navigate('cotizaciones'); toggleMenu();" class="block px-3 py-3 text-base font-medium text-brand-slate border-b border-white/10">Cotizaciones</a>
+        <a href="#" onclick="navigate('nosotros'); toggleMenu();" class="block px-3 py-3 text-base font-medium text-brand-slate border-b border-white/10">Nosotros</a>
+        <a href="#" onclick="navigate('contacto'); toggleMenu();" class="block px-3 py-3 text-base font-medium text-brand-slate">Contacto</a>
+        <button onclick="navigate('diagnostico'); toggleMenu();" class="mt-4 w-full bg-brand-orange text-white px-5 py-3 rounded-lg text-base font-medium">
+          Diagnóstico Gratuito
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenedor Principal de Páginas -->
+  <main class="pt-20">
+    
+    <!-- ==================== PÁGINA 1: INICIO ==================== -->
+    <div id="inicio" class="page-section active">
+      
+      <!-- Hero Section -->
+      <section class="relative bg-brand-cream overflow-hidden">
+        <div class="absolute inset-0 gradient-overlay pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10">
+          <div class="text-center max-w-4xl mx-auto">
+            <span class="inline-block py-1 px-3 rounded-full bg-white border border-brand-gray text-xs font-medium text-brand-slate mb-6 shadow-sm">
+              <i class="fas fa-chart-line text-brand-orange mr-2"></i> Digitalizamos y hacemos crecer tu negocio
+            </span>
+            <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-brand-blue mb-6 leading-tight">
+              Hacemos crecer tu negocio <br class="hidden md:block">
+              <span class="gradient-text">física y digitalmente.</span>
+            </h1>
+            <h2 class="text-xl md:text-2xl font-medium text-brand-slate mb-6">
+              Nuestro objetivo es ayudarte a hacer crecer tu negocio.
+            </h2>
+            <p class="text-lg text-brand-slate mb-10 max-w-2xl mx-auto leading-relaxed">
+              Ayudamos a tu negocio a crecer con estrategia y acompañamiento personalizado mediante estrategias físicas y digitales.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+              <button onclick="navigate('diagnostico')" class="relative overflow-hidden bg-brand-orange text-white px-8 py-4 rounded-full text-base font-medium hover:bg-brand-amber transition shadow-lg shadow-orange-500/30 flex items-center justify-center btn-shine group">
+                <span class="relative z-10">Descubre cómo hacer crecer tu negocio <i class="fas fa-arrow-right ml-2"></i></span>
+              </button>
+                        <a href="https://wa.me/524271680265" target="_blank" class="bg-white text-brand-blue border border-brand-gray px-8 py-4 rounded-full text-base font-medium hover:bg-brand-cream transition shadow-sm flex items-center justify-center">
+                <i class="fab fa-whatsapp text-green-500 text-lg mr-2"></i> Hablar por WhatsApp
+              </a>
+            </div>
+          </div>
+          
+          <!-- Imagen Hero -->
+          <div class="mt-16 max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Empresarios trabajando en estrategia" class="w-full h-auto object-cover max-h-[600px]">
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonios -->
+      <section class="py-20 bg-brand-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-brand-blue mb-3">Lo que dicen nuestros clientes</h2>
+            <p class="text-brand-slate">Negocios reales que ya están creciendo con Mundo Gráfico.</p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Testimonio 1 -->
+            <div class="bg-white rounded-3xl p-8 border border-white/10 shadow-premium flex flex-col">
+              <div class="flex text-brand-orange mb-4">
+                <i class="fas fa-star text-sm"></i><i class="fas fa-star text-sm ml-1"></i>
+                <i class="fas fa-star text-sm ml-1"></i><i class="fas fa-star text-sm ml-1"></i>
+                <i class="fas fa-star text-sm ml-1"></i>
+              </div>
+              <p class="text-brand-slate leading-relaxed mb-6 flex-1">"Antes no teníamos presencia digital. Oscar y su equipo nos ayudaron a tener un sitio web profesional y en dos meses ya estábamos recibiendo clientes por Google."</p>
+              <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-brand-blue text-white flex items-center justify-center font-bold text-sm mr-3">MR</div>
+                <div>
+                  <p class="font-bold text-brand-blue text-sm">María Rodríguez</p>
+                  <p class="text-xs text-brand-slate">Dueña · Pastelería La Dulce</p>
+                </div>
+              </div>
+            </div>
+            <!-- Testimonio 2 -->
+            <div class="bg-white rounded-3xl p-8 border border-white/10 shadow-premium flex flex-col">
+              <div class="flex text-brand-orange mb-4">
+                <i class="fas fa-star text-sm"></i><i class="fas fa-star text-sm ml-1"></i>
+                <i class="fas fa-star text-sm ml-1"></i><i class="fas fa-star text-sm ml-1"></i>
+                <i class="fas fa-star text-sm ml-1"></i>
+              </div>
+              <p class="text-brand-slate leading-relaxed mb-6 flex-1">"Implementaron un sistema de respuestas automáticas en WhatsApp que ahora atiende a mis clientes 24/7. Ya no pierdo ventas por no contestar a tiempo."</p>
+              <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-brand-orange text-white flex items-center justify-center font-bold text-sm mr-3">CL</div>
+                <div>
+                  <p class="font-bold text-brand-blue text-sm">Carlos López</p>
+                  <p class="text-xs text-brand-slate">Director · Ferretería El Clavo</p>
+                </div>
+              </div>
+            </div>
+            <!-- Testimonio 3 -->
+            <div class="bg-white rounded-3xl p-8 border border-white/10 shadow-premium flex flex-col">
+              <div class="flex text-brand-orange mb-4">
+                <i class="fas fa-star text-sm"></i><i class="fas fa-star text-sm ml-1"></i>
+                <i class="fas fa-star text-sm ml-1"></i><i class="fas fa-star text-sm ml-1"></i>
+                <i class="fas fa-star text-sm ml-1"></i>
+              </div>
+              <p class="text-brand-slate leading-relaxed mb-6 flex-1">"Lo mejor fue el acompañamiento. No solo entregaron el proyecto y desaparecieron, sino que siguen con nosotros optimizando nuestra estrategia cada mes."</p>
+              <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-brand-navy text-white flex items-center justify-center font-bold text-sm mr-3">AG</div>
+                <div>
+                  <p class="font-bold text-brand-blue text-sm">Ana Gutiérrez</p>
+                  <p class="text-xs text-brand-slate">Fundadora · Estudio Forma</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ¿Por qué elegir Mundo Gráfico? -->
+      <section class="py-24 bg-brand-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-brand-blue mb-4">¿Por qué elegir Mundo Gráfico?</h2>
+            <p class="text-brand-slate max-w-2xl mx-auto">Nuestro objetivo es ayudar a los negocios a crecer física y digitalmente.</p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-10">
+            <div class="p-8 rounded-3xl bg-white border border-white/10 hover:shadow-premium transition">
+              <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6">
+                <i class="fas fa-bullseye text-brand-orange text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-brand-blue mb-3">Estrategias personalizadas</h3>
+              <p class="text-brand-slate leading-relaxed">Cada negocio es diferente, por eso diseñamos soluciones adaptadas a tus objetivos y necesidades.</p>
+            </div>
+            <div class="p-8 rounded-3xl bg-white border border-white/10 hover:shadow-premium transition">
+              <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6">
+                <i class="fas fa-chart-bar text-brand-orange text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-brand-blue mb-3">Enfoque en crecimiento</h3>
+              <p class="text-brand-slate leading-relaxed">Cada acción que proponemos tiene un objetivo: ayudarte a atraer más clientes, aumentar tus ventas y mejorar tus procesos.</p>
+            </div>
+            <div class="p-8 rounded-3xl bg-white border border-white/10 hover:shadow-premium transition">
+              <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6">
+                <i class="fas fa-handshake text-brand-orange text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-brand-blue mb-3">Acompañamiento cercano</h3>
+              <p class="text-brand-slate leading-relaxed">Trabajamos contigo durante todo el proceso para asegurarnos de que cada estrategia genere resultados reales.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Previsualización de Servicios -->
+      <section class="py-24 bg-brand-cream border-y border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between items-end mb-12">
+            <div>
+              <h2 class="text-3xl font-bold text-brand-blue mb-4">Nuestros Servicios</h2>
+              <p class="text-brand-slate max-w-xl">Soluciones que impulsan el crecimiento físico y digital de tu negocio.</p>
+            </div>
+            <button onclick="navigate('servicios')" class="hidden md:flex text-brand-orange font-medium hover:text-brand-amber items-center">
+              Ver todos <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white p-8 rounded-2xl border border-white/10 shadow-sm hover:shadow-premium-hover transition group cursor-pointer card-premium" onclick="navigate('servicios')">
+              <div class="w-12 h-12 bg-brand-cream text-brand-blue rounded-xl flex items-center justify-center text-2xl mb-4 icon-float">
+                <i class="fas fa-laptop-code"></i>
+              </div>
+              <h3 class="text-xl font-bold text-brand-blue mb-2">Diseño y Modernización Web</h3>
+              <p class="text-brand-slate">Creamos sitios web diseñados para generar confianza y atraer clientes.</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-white/10 shadow-sm hover:shadow-premium-hover transition group cursor-pointer card-premium" onclick="navigate('servicios')">
+              <div class="w-12 h-12 bg-brand-cream text-brand-blue rounded-xl flex items-center justify-center text-2xl mb-4 icon-float">
+                <i class="fas fa-robot"></i>
+              </div>
+              <h3 class="text-xl font-bold text-brand-blue mb-2">Automatización e Inteligencia Artificial</h3>
+              <p class="text-brand-slate">Optimizamos tareas repetitivas para que puedas enfocarte en hacer crecer tu negocio.</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-white/10 shadow-sm hover:shadow-premium-hover transition group cursor-pointer card-premium" onclick="navigate('servicios')">
+              <div class="w-12 h-12 bg-brand-cream text-brand-blue rounded-xl flex items-center justify-center text-2xl mb-4 icon-float">
+                <i class="fas fa-bullhorn"></i>
+              </div>
+              <h3 class="text-xl font-bold text-brand-blue mb-2">Marketing de tu Negocio</h3>
+              <p class="text-brand-slate">Implementamos estrategias para aumentar tu visibilidad y atraer nuevos clientes.</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-white/10 shadow-sm hover:shadow-premium-hover transition group cursor-pointer card-premium" onclick="navigate('servicios')">
+              <div class="w-12 h-12 bg-brand-cream text-brand-blue rounded-xl flex items-center justify-center text-2xl mb-4 icon-float">
+                <i class="fas fa-photo-video"></i>
+              </div>
+              <h3 class="text-xl font-bold text-brand-blue mb-2">Creación y Edición de Contenido</h3>
+              <p class="text-brand-slate">Desarrollamos contenido visual que fortalece tu marca y conecta con tu audiencia.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Precios -->
+      <section class="py-24 bg-brand-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-brand-blue mb-4">Soluciones para tu negocio</h2>
+            <p class="text-brand-slate max-w-2xl mx-auto">Opciones diseñadas para impulsar tu crecimiento físico y digital.</p>
+          </div>
+
+          <div class="grid md:grid-cols-4 gap-6">
+            <div class="bg-white p-8 rounded-3xl border border-white/10 shadow-sm hover:shadow-premium-hover transition group card-premium">
+              <div class="w-12 h-12 bg-brand-cream text-brand-blue rounded-xl flex items-center justify-center text-2xl mb-5 icon-float">
+                <i class="fas fa-laptop-code"></i>
+              </div>
+              <h3 class="text-xl font-bold text-brand-blue mb-3">Servicios de Diseño Web</h3>
+              <p class="text-brand-orange text-2xl font-bold">Desde $4,999 MXN</p>
+            </div>
+
+            <div class="bg-white p-8 rounded-3xl border border-white/10 shadow-sm hover:shadow-premium-hover transition group card-premium">
+              <div class="w-12 h-12 bg-brand-cream text-brand-blue rounded-xl flex items-center justify-center text-2xl mb-5 icon-float">
+                <i class="fas fa-bullhorn"></i>
+              </div>
+              <h3 class="text-xl font-bold text-brand-blue mb-3">Marketing Digital</h3>
+              <p class="text-brand-orange text-2xl font-bold">Desde $2,500 MXN/mes</p>
+            </div>
+
+            <div class="bg-white p-8 rounded-3xl border border-white/10 shadow-sm hover:shadow-premium-hover transition group card-premium">
+              <div class="w-12 h-12 bg-brand-cream text-brand-blue rounded-xl flex items-center justify-center text-2xl mb-5 icon-float">
+                <i class="fas fa-pen-nib"></i>
+              </div>
+              <h3 class="text-xl font-bold text-brand-blue mb-3">Branding y Diseño Gráfico</h3>
+              <p class="text-brand-orange text-2xl font-bold">Desde $800 MXN</p>
+            </div>
+
+            <div class="bg-white p-8 rounded-3xl border border-white/10 shadow-sm hover:shadow-premium-hover transition group card-premium">
+              <div class="w-12 h-12 bg-brand-cream text-brand-blue rounded-xl flex items-center justify-center text-2xl mb-5 icon-float">
+                <i class="fas fa-layer-group"></i>
+              </div>
+              <h3 class="text-xl font-bold text-brand-blue mb-3">Soluciones Integrales</h3>
+              <p class="text-brand-orange text-2xl font-bold">Desde $6,999 MXN</p>
+            </div>
+          </div>
+
+          <div class="mt-12 text-center">
+            <p class="text-lg text-brand-slate max-w-3xl mx-auto leading-relaxed mb-8">Cada proyecto es único. Solicita una cotización gratuita y recibe una propuesta personalizada para tu negocio.</p>
+            <button onclick="navigate('diagnostico')" class="relative overflow-hidden bg-brand-orange text-white px-8 py-4 rounded-full text-base font-medium hover:bg-brand-amber transition shadow-lg shadow-orange-500/30 btn-shine">
+              <span class="relative z-10">Solicitar cotización gratuita <i class="fas fa-arrow-right ml-2"></i></span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Proceso -->
+      <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-brand-blue mb-4">Cómo trabajamos</h2>
+            <p class="text-brand-slate max-w-2xl mx-auto">Una metodología clara para ayudarte a crecer física y digitalmente.</p>
+          </div>
+          
+          <div class="grid md:grid-cols-4 gap-8 relative">
+            <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-brand-gray -z-10 transform -translate-y-1/2"></div>
+            
+            <div class="bg-white p-6 rounded-2xl border border-white/10 shadow-sm relative z-10 text-center card-premium hover:shadow-premium-hover transition-all">
+              <div class="w-10 h-10 bg-brand-blue text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4 icon-float">1</div>
+              <h3 class="font-bold text-brand-blue mb-2">Analizamos tu negocio</h3>
+              <p class="text-sm text-brand-slate">Conocemos tu situación actual, tus objetivos y las oportunidades de crecimiento.</p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl border border-white/10 shadow-sm relative z-10 text-center card-premium hover:shadow-premium-hover transition-all">
+              <div class="w-10 h-10 bg-brand-blue text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4 icon-float">2</div>
+              <h3 class="font-bold text-brand-blue mb-2">Diseñamos una estrategia</h3>
+              <p class="text-sm text-brand-slate">Creamos un plan personalizado con acciones físicas y digitales adaptadas a tu negocio.</p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl border border-white/10 shadow-sm relative z-10 text-center card-premium hover:shadow-premium-hover transition-all">
+              <div class="w-10 h-10 bg-brand-blue text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4 icon-float">3</div>
+              <h3 class="font-bold text-brand-blue mb-2">Implementamos las soluciones</h3>
+              <p class="text-sm text-brand-slate">Ejecutamos las herramientas, mejoras y estrategias necesarias para impulsar tu crecimiento.</p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl border border-white/10 shadow-sm relative z-10 text-center card-premium hover:shadow-premium-hover transition-all">
+              <div class="w-10 h-10 bg-brand-blue text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4 icon-float">4</div>
+              <h3 class="font-bold text-brand-blue mb-2">Te acompañamos en el proceso</h3>
+              <p class="text-sm text-brand-slate">Damos seguimiento, medimos resultados y buscamos nuevas oportunidades de mejora.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Principal -->
+      <section class="relative py-20 bg-brand-navy rounded-3xl mx-4 sm:mx-6 lg:mx-8 mb-24 text-center px-4 overflow-hidden">
+        <div class="absolute inset-0 gradient-overlay pointer-events-none opacity-50"></div>
+        <div class="relative z-10 max-w-3xl mx-auto">
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Nuestro compromiso contigo</h2>
+          <p class="text-brand-cream text-lg mb-10">No creemos en soluciones genéricas. Cada negocio recibe una estrategia adaptada a sus objetivos, necesidades y oportunidades para crecer.</p>
+          <button onclick="navigate('diagnostico')" class="relative overflow-hidden bg-brand-orange text-white px-10 py-4 rounded-full text-lg font-bold hover:bg-brand-amber transition shadow-lg shadow-brand-orange/40 transform hover:-translate-y-1 btn-shine">
+            <span class="relative z-10">Solicitar Diagnóstico Gratuito</span>
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== PÁGINA 2: SERVICIOS ==================== -->
+    <div id="servicios" class="page-section">
+      <section class="relative bg-brand-cream py-20 border-b border-white/10 overflow-hidden">
+        <div class="absolute inset-0 gradient-overlay pointer-events-none"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 class="text-4xl font-bold text-brand-blue mb-4">Nuestros Servicios</h1>
+          <p class="text-lg text-brand-slate max-w-2xl mx-auto">Soluciones integrales diseñadas para generar confianza, atraer clientes y fortalecer tu negocio.</p>
+        </div>
+      </section>
+
+      <section class="py-20 bg-brand-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+        <!-- Servicio 1: Web -->
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="bg-white p-10 rounded-3xl border border-white/10 shadow-premium">
+            <div class="w-14 h-14 bg-brand-cream text-brand-blue rounded-2xl flex items-center justify-center text-2xl mb-6"><i class="fas fa-desktop"></i></div>
+            <h2 class="text-3xl font-bold text-brand-blue mb-4">Diseño y Modernización Web</h2>
+            <p class="text-brand-slate mb-6 leading-relaxed">Creamos sitios web diseñados para generar confianza y atraer clientes.</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i> <span class="text-brand-slate">Diseño ultra-rápido y adaptable a móviles.</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i> <span class="text-brand-slate">Estructura optimizada para posicionamiento (SEO).</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i> <span class="text-brand-slate">Botones integrados directo a tu WhatsApp.</span></li>
+            </ul>
+            <button onclick="navigate('diagnostico')" class="text-brand-orange font-bold hover:text-brand-amber transition">Quiero modernizar mi web <i class="fas fa-arrow-right ml-1"></i></button>
+          </div>
+          <div class="bg-brand-gray rounded-3xl h-80 border border-white/10 flex items-center justify-center shadow-inner overflow-hidden img-zoom">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Diseño Web" class="w-full h-full object-cover opacity-90">
+          </div>
+        </div>
+
+        <!-- Servicio 2: IA -->
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="order-2 md:order-1 bg-brand-gray rounded-3xl h-80 border border-white/10 flex items-center justify-center shadow-inner overflow-hidden img-zoom">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Automatización IA" class="w-full h-full object-cover opacity-90">
+          </div>
+          <div class="order-1 md:order-2 bg-white p-10 rounded-3xl border border-white/10 shadow-premium">
+            <div class="w-14 h-14 bg-brand-cream text-brand-orange rounded-2xl flex items-center justify-center text-2xl mb-6 icon-float"><i class="fas fa-microchip"></i></div>
+            <h2 class="text-3xl font-bold text-brand-blue mb-4">Automatización e Inteligencia Artificial</h2>
+            <p class="text-brand-slate mb-6 leading-relaxed">Optimizamos tareas repetitivas para que puedas enfocarte en hacer crecer tu negocio.</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i> <span class="text-brand-slate">Respuestas automáticas en WhatsApp y Redes.</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i> <span class="text-brand-slate">Gestión de citas y calendarios.</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i> <span class="text-brand-slate">Organización de bases de datos de clientes.</span></li>
+            </ul>
+            <button onclick="navigate('diagnostico')" class="text-brand-orange font-bold hover:text-brand-amber transition">Quiero automatizar procesos <i class="fas fa-arrow-right ml-1"></i></button>
+          </div>
+        </div>
+
+        <!-- Servicio 3: Marketing Digital -->
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="bg-white p-10 rounded-3xl border border-white/10 shadow-premium">
+            <div class="w-14 h-14 bg-brand-cream text-brand-blue rounded-2xl flex items-center justify-center text-2xl mb-6"><i class="fas fa-bullhorn"></i></div>
+            <h2 class="text-3xl font-bold text-brand-blue mb-4">Marketing de tu Negocio</h2>
+            <p class="text-brand-slate mb-6 leading-relaxed">Implementamos estrategias para aumentar tu visibilidad y atraer nuevos clientes.</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i> <span class="text-brand-slate">Gestión de redes sociales</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i> <span class="text-brand-slate">Campañas publicitarias</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i> <span class="text-brand-slate">Captación de clientes</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i> <span class="text-brand-slate">Branding</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i> <span class="text-brand-slate">Posicionamiento digital</span></li>
+            </ul>
+            <button onclick="navigate('diagnostico')" class="text-brand-orange font-bold hover:text-brand-amber transition">Quiero mejorar mi marketing <i class="fas fa-arrow-right ml-1"></i></button>
+          </div>
+          <div class="bg-brand-gray rounded-3xl h-80 border border-white/10 flex items-center justify-center shadow-inner overflow-hidden img-zoom">
+            <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Marketing Digital" class="w-full h-full object-cover opacity-90">
+          </div>
+        </div>
+
+        <!-- Servicio 4: Contenido -->
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="order-2 md:order-1 bg-brand-gray rounded-3xl h-80 border border-white/10 flex items-center justify-center shadow-inner overflow-hidden img-zoom">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Creación y Edición de Contenido" class="w-full h-full object-cover opacity-90">
+          </div>
+          <div class="order-1 md:order-2 bg-white p-10 rounded-3xl border border-white/10 shadow-premium">
+            <div class="w-14 h-14 bg-brand-cream text-brand-orange rounded-2xl flex items-center justify-center text-2xl mb-6 icon-float"><i class="fas fa-photo-video"></i></div>
+            <h2 class="text-3xl font-bold text-brand-blue mb-4">Creación y Edición de Contenido</h2>
+            <p class="text-brand-slate mb-6 leading-relaxed">Desarrollamos contenido visual que fortalece tu marca y conecta con tu audiencia.</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i> <span class="text-brand-slate">Diseño gráfico</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i> <span class="text-brand-slate">Edición de video</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i> <span class="text-brand-slate">Reels para redes sociales</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i> <span class="text-brand-slate">Fotografía comercial</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i> <span class="text-brand-slate">Contenido para marketing</span></li>
+            </ul>
+            <button onclick="navigate('diagnostico')" class="text-brand-orange font-bold hover:text-brand-amber transition">Quiero contenido creativo <i class="fas fa-arrow-right ml-1"></i></button>
+          </div>
+        </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== PÁGINA 3: COTIZACIONES ==================== -->
+    <div id="cotizaciones" class="page-section">
+      <section class="relative bg-brand-cream py-20 border-b border-white/10 overflow-hidden">
+        <div class="absolute inset-0 gradient-overlay pointer-events-none"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 class="text-4xl font-bold text-brand-blue mb-4">Cotizaciones y Paquetes</h1>
+          <p class="text-lg text-brand-slate max-w-3xl mx-auto">Servicios diseñados para ayudarte a construir presencia profesional, atraer clientes y crecer con una estrategia clara.</p>
+        </div>
+      </section>
+
+      <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-8">
+          <div class="bg-white p-8 rounded-3xl border border-white/10 shadow-premium card-premium">
+            <div class="w-14 h-14 bg-brand-cream text-brand-blue rounded-2xl flex items-center justify-center text-2xl mb-6 icon-float">
+              <i class="fas fa-globe"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-brand-blue mb-3">Diseño Web</h2>
+            <p class="text-brand-orange text-2xl font-bold mb-5">Desde $4,999 MXN</p>
+            <p class="text-brand-slate leading-relaxed mb-6">Creamos sitios web modernos, rápidos y adaptables a cualquier dispositivo para que tu negocio tenga presencia profesional en internet y genere más clientes.</p>
+            <h3 class="font-bold text-brand-blue mb-3">Incluye:</h3>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Diseño personalizado</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Adaptación a celulares y computadoras</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Integración con WhatsApp</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Formularios de contacto</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Google Maps</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Optimización SEO básica</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Hosting y dominio disponibles</span></li>
+            </ul>
+            <p class="text-brand-slate font-medium mb-8">Ideal para: negocios, emprendedores y profesionistas.</p>
+            <button onclick="navigate('diagnostico')" class="relative overflow-hidden bg-brand-orange text-white px-6 py-3 rounded-full font-bold hover:bg-brand-amber transition shadow-lg shadow-orange-500/30 btn-shine">
+              <span class="relative z-10">Solicitar Cotización</span>
+            </button>
+          </div>
+
+          <div class="bg-white p-8 rounded-3xl border border-white/10 shadow-premium card-premium">
+            <div class="w-14 h-14 bg-brand-cream text-brand-blue rounded-2xl flex items-center justify-center text-2xl mb-6 icon-float">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-brand-blue mb-3">Marketing Digital</h2>
+            <p class="text-brand-orange text-2xl font-bold mb-5">Desde $2,500 MXN / mes</p>
+            <p class="text-brand-slate leading-relaxed mb-6">Desarrollamos estrategias digitales para aumentar tu alcance, atraer clientes potenciales y fortalecer tu presencia en redes sociales.</p>
+            <h3 class="font-bold text-brand-blue mb-3">Incluye:</h3>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Gestión de redes sociales</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Diseño de publicaciones</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Calendario de contenido</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Estrategia de crecimiento</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Reels y contenido visual</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Reportes de resultados</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Campañas publicitarias</span></li>
+            </ul>
+            <p class="text-brand-slate font-medium mb-8">Ideal para: negocios que quieren vender más y crecer en línea.</p>
+            <button onclick="navigate('diagnostico')" class="relative overflow-hidden bg-brand-orange text-white px-6 py-3 rounded-full font-bold hover:bg-brand-amber transition shadow-lg shadow-orange-500/30 btn-shine">
+              <span class="relative z-10">Solicitar Cotización</span>
+            </button>
+          </div>
+
+          <div class="bg-white p-8 rounded-3xl border border-white/10 shadow-premium card-premium">
+            <div class="w-14 h-14 bg-brand-cream text-brand-blue rounded-2xl flex items-center justify-center text-2xl mb-6 icon-float">
+              <i class="fas fa-palette"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-brand-blue mb-3">Branding y Diseño Gráfico</h2>
+            <p class="text-brand-orange text-2xl font-bold mb-5">Desde $800 MXN</p>
+            <p class="text-brand-slate leading-relaxed mb-6">Construimos una identidad visual profesional que haga que tu marca destaque y genere confianza en tus clientes.</p>
+            <h3 class="font-bold text-brand-blue mb-3">Incluye:</h3>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Diseño de logotipos</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Identidad corporativa</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Tarjetas de presentación</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Flyers y publicidad</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Menús digitales</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Diseños para redes sociales</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Material promocional</span></li>
+            </ul>
+            <p class="text-brand-slate font-medium mb-8">Ideal para: negocios nuevos o marcas que buscan renovarse.</p>
+            <button onclick="navigate('diagnostico')" class="relative overflow-hidden bg-brand-orange text-white px-6 py-3 rounded-full font-bold hover:bg-brand-amber transition shadow-lg shadow-orange-500/30 btn-shine">
+              <span class="relative z-10">Solicitar Cotización</span>
+            </button>
+          </div>
+
+          <div class="bg-white p-8 rounded-3xl border border-white/10 shadow-premium card-premium">
+            <div class="w-14 h-14 bg-brand-cream text-brand-blue rounded-2xl flex items-center justify-center text-2xl mb-6 icon-float">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-brand-blue mb-3">Soluciones Integrales</h2>
+            <p class="text-brand-orange text-2xl font-bold mb-5">Desde $6,999 MXN</p>
+            <p class="text-brand-slate leading-relaxed mb-6">Unificamos diseño, marketing y tecnología para ayudarte a crecer de manera física y digital con una estrategia completa.</p>
+            <h3 class="font-bold text-brand-blue mb-3">Incluye:</h3>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Sitio web profesional</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Branding empresarial</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Marketing digital</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Gestión de redes sociales</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Producción de contenido</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Optimización de presencia digital</span></li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-brand-orange mt-1 mr-3"></i><span class="text-brand-slate">Acompañamiento estratégico</span></li>
+            </ul>
+            <p class="text-brand-slate font-medium mb-8">Ideal para: negocios que buscan una solución completa en un solo lugar.</p>
+            <button onclick="navigate('diagnostico')" class="relative overflow-hidden bg-brand-orange text-white px-6 py-3 rounded-full font-bold hover:bg-brand-amber transition shadow-lg shadow-orange-500/30 btn-shine">
+              <span class="relative z-10">Solicitar Cotización</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-16 bg-brand-navy rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
+          <div class="absolute inset-0 gradient-overlay pointer-events-none opacity-50"></div>
+          <div class="relative z-10 max-w-3xl mx-auto">
+            <p class="text-brand-cream text-lg leading-relaxed mb-8">Cada proyecto es único. Analizamos las necesidades de tu negocio y te presentamos una propuesta personalizada para ayudarte a alcanzar tus objetivos.</p>
+            <button onclick="navigate('diagnostico')" class="relative overflow-hidden bg-brand-orange text-white px-8 py-4 rounded-full text-base font-bold hover:bg-brand-amber transition shadow-lg shadow-brand-orange/40 btn-shine">
+              <span class="relative z-10">Solicitar Cotización Gratuita <i class="fas fa-arrow-right ml-2"></i></span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== PÁGINA 4: NOSOTROS ==================== -->
+    <div id="nosotros" class="page-section">
+      <section class="relative bg-brand-cream py-20 border-b border-white/10 overflow-hidden">
+        <div class="absolute inset-0 gradient-overlay pointer-events-none"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 class="text-4xl font-bold text-brand-blue mb-4">Quiénes somos</h1>
+          <p class="text-lg text-brand-slate max-w-3xl mx-auto">Mundo Gráfico nace con el objetivo de ayudar a los negocios a crecer física y digitalmente mediante estrategias personalizadas, acompañamiento cercano y soluciones adaptadas a las necesidades de cada negocio.</p>
+        </div>
+      </section>
+
+      <section class="py-20 bg-brand-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-12 mb-24">
+          <div class="bg-white p-10 rounded-3xl border border-white/10 shadow-premium">
+            <h2 class="text-2xl font-bold text-brand-blue mb-4 flex items-center"><i class="fas fa-flag text-brand-orange mr-3"></i> Nuestra Misión</h2>
+            <p class="text-brand-slate leading-relaxed">Ayudar a los negocios a crecer, fortalecer su presencia y aprovechar las oportunidades que ofrece el mundo digital para alcanzar sus objetivos.</p>
+          </div>
+          <div class="bg-white p-10 rounded-3xl border border-white/10 shadow-premium">
+            <h2 class="text-2xl font-bold text-brand-blue mb-4 flex items-center"><i class="fas fa-eye text-brand-orange mr-3"></i> Nuestra Visión</h2>
+            <p class="text-brand-slate leading-relaxed">Convertirnos en un aliado estratégico para empresas y negocios que buscan crecer de manera sostenible mediante estrategias físicas y digitales.</p>
+          </div>
+        </div>
+
+        <!-- Valores -->
+        <div class="mb-24">
+          <h2 class="text-3xl font-bold text-brand-blue text-center mb-12">Nuestros Valores</h2>
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
+            <div class="bg-white p-6 rounded-3xl border border-white/10 shadow-sm">
+              <div class="w-16 h-16 mx-auto bg-brand-gray rounded-full flex items-center justify-center mb-4"><i class="fas fa-handshake text-xl text-brand-blue"></i></div>
+              <h3 class="font-bold text-brand-blue mb-2">Compromiso</h3>
+              <p class="text-xs text-brand-slate">Nos involucramos en cada proyecto como si fuera propio, buscando siempre generar el mayor impacto posible.</p>
+            </div>
+            <div class="bg-white p-6 rounded-3xl border border-white/10 shadow-sm">
+              <div class="w-16 h-16 mx-auto bg-brand-gray rounded-full flex items-center justify-center mb-4"><i class="fas fa-shield-alt text-xl text-brand-blue"></i></div>
+              <h3 class="font-bold text-brand-blue mb-2">Honestidad</h3>
+              <p class="text-xs text-brand-slate">Actuamos con transparencia y construimos relaciones basadas en la confianza.</p>
+            </div>
+            <div class="bg-white p-6 rounded-3xl border border-white/10 shadow-sm">
+              <div class="w-16 h-16 mx-auto bg-brand-gray rounded-full flex items-center justify-center mb-4"><i class="fas fa-users text-xl text-brand-blue"></i></div>
+              <h3 class="font-bold text-brand-blue mb-2">Cercanía</h3>
+              <p class="text-xs text-brand-slate">Escuchamos, entendemos y acompañamos a nuestros clientes en cada etapa de su crecimiento.</p>
+            </div>
+            <div class="bg-white p-6 rounded-3xl border border-white/10 shadow-sm">
+              <div class="w-16 h-16 mx-auto bg-brand-gray rounded-full flex items-center justify-center mb-4"><i class="fas fa-lightbulb text-xl text-brand-blue"></i></div>
+              <h3 class="font-bold text-brand-blue mb-2">Innovación</h3>
+              <p class="text-xs text-brand-slate">Buscamos constantemente nuevas herramientas y estrategias para aportar valor a cada negocio.</p>
+            </div>
+            <div class="bg-white p-6 rounded-3xl border border-white/10 shadow-sm">
+              <div class="w-16 h-16 mx-auto bg-brand-gray rounded-full flex items-center justify-center mb-4"><i class="fas fa-chart-line text-xl text-brand-blue"></i></div>
+              <h3 class="font-bold text-brand-blue mb-2">Enfoque en resultados</h3>
+              <p class="text-xs text-brand-slate">Cada acción tiene un propósito: ayudar a nuestros clientes a crecer y alcanzar sus objetivos.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fundador -->
+        <div class="bg-brand-navy rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+          <div class="md:w-1/3 bg-brand-gray min-h-[300px] overflow-hidden">
+            <!-- Imagen del fundador -->
+            <img src="assets/fotooscar.png" alt="Oscar Gaspar - Fundador" class="w-full h-full object-cover object-top">
+          </div>
+          <div class="md:w-2/3 p-10 flex flex-col justify-center">
+            <h2 class="text-3xl font-bold text-white mb-2">Oscar Gaspar</h2>
+            <p class="text-brand-orange font-medium mb-6">Fundador de Mundo Gráfico</p>
+            <p class="text-brand-slate leading-relaxed">Apasionado por ayudar a los negocios a crecer física y digitalmente mediante estrategias personalizadas, tecnología y acompañamiento cercano. Mundo Gráfico nació con la visión de convertirse en un aliado estratégico para empresas y negocios que buscan adaptarse, crecer y aprovechar las oportunidades del entorno actual. Nuestro objetivo no es solo ofrecer servicios, sino ayudar a nuestros clientes a generar resultados reales y sostenibles.</p>
+          </div>
+        </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== PÁGINA 5: DIAGNÓSTICO GRATUITO ==================== -->
+    <div id="diagnostico" class="page-section">
+      <section class="bg-brand-cream py-20 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 class="text-4xl font-bold text-brand-blue mb-4">Diagnóstico de Crecimiento Gratuito</h1>
+          <p class="text-lg text-brand-slate max-w-2xl mx-auto">Descubre el potencial de crecimiento de tu negocio. Recibe un diagnóstico gratuito donde analizaremos tu negocio y detectaremos oportunidades para ayudarte a crecer física y digitalmente.</p>
+        </div>
+      </section>
+
+      <section class="py-20 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white p-8 md:p-12 rounded-3xl border border-white/10 shadow-premium">
+          <form id="diagnostico-form" class="space-y-5">
+            <div class="grid md:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-sm font-medium text-brand-slate mb-2">Nombre *</label>
+                <input type="text" name="nombre" required class="w-full px-4 py-3 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none" placeholder="Ej. Ana Pérez">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-brand-slate mb-2">Nombre del negocio *</label>
+                <input type="text" name="negocio" required class="w-full px-4 py-3 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none" placeholder="Ej. Ferretería El Clavo">
+              </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-sm font-medium text-brand-slate mb-2">¿A qué se dedica tu negocio? *</label>
+                <input type="text" name="actividad" required class="w-full px-4 py-3 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-brand-slate mb-2">WhatsApp *</label>
+                <input type="tel" name="telefono" required class="w-full px-4 py-3 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none" placeholder="Ej. 442 000 0000">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-brand-slate mb-2">¿Cuál es el principal problema de tu negocio actualmente?</label>
+              <textarea name="mensaje" rows="4" class="w-full px-4 py-3 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none"></textarea>
+            </div>
+
+            <button type="submit" class="w-full relative overflow-hidden bg-brand-orange text-white py-4 rounded-xl text-lg font-bold hover:bg-brand-amber transition shadow-lg shadow-orange-500/30 mt-4 btn-shine">
+              <span class="relative z-10">Solicitar Diagnóstico Gratuito</span>
+            </button>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== PÁGINA 6: CONTACTO ==================== -->
+    <div id="contacto" class="page-section">
+      <section class="relative bg-brand-cream py-20 border-b border-white/10 overflow-hidden">
+        <div class="absolute inset-0 gradient-overlay pointer-events-none"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 class="text-4xl font-bold text-brand-blue mb-4">Contacto</h1>
+          <p class="text-lg text-brand-slate max-w-2xl mx-auto">Hablemos sobre el crecimiento de tu negocio.</p>
+        </div>
+      </section>
+
+      <section class="py-20 bg-brand-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12">
+          <!-- Info de contacto -->
+          <div class="space-y-8 bg-white p-10 rounded-3xl border border-white/10 shadow-premium">
+            <h2 class="text-2xl font-bold text-brand-blue">Hablemos sobre el crecimiento de tu negocio</h2>
+            <p class="text-brand-slate leading-relaxed">¿Quieres atraer más clientes, mejorar tus procesos o fortalecer tu presencia digital? Estamos listos para ayudarte.</p>
+            
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div class="w-12 h-12 bg-brand-cream text-brand-blue rounded-full flex items-center justify-center text-xl mr-4 shrink-0">
+                  <i class="fab fa-whatsapp"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-brand-blue">WhatsApp</h3>
+                  <a href="https://wa.me/524271680265" target="_blank" class="text-brand-orange hover:underline">+52 427 168 02 65</a>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-12 h-12 bg-brand-cream text-brand-blue rounded-full flex items-center justify-center text-xl mr-4 shrink-0">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-brand-blue">Correo Electrónico</h3>
+                  <a href="mailto:mundo.graficoco1@gmail.com" class="text-brand-orange hover:underline">mundo.graficoco1@gmail.com</a>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-12 h-12 bg-brand-cream text-brand-blue rounded-full flex items-center justify-center text-xl mr-4 shrink-0">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-brand-blue">Ubicación</h3>
+                  <p class="text-brand-slate">Querétaro, México (Trabajamos también de forma remota)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formulario Contacto -->
+          <div class="bg-white p-8 rounded-3xl border border-white/10 shadow-premium">
+            <h3 class="text-xl font-bold text-brand-blue mb-6">Envíanos un mensaje</h3>
+            <form id="contact-form" class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-brand-slate mb-1">Nombre</label>
+                <input type="text" name="nombre" required class="w-full px-4 py-2 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-brand-slate mb-1">Correo electrónico</label>
+                <input type="email" name="email" required class="w-full px-4 py-2 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-brand-slate mb-1">Teléfono</label>
+                <input type="tel" name="telefono" required
+                  class="w-full px-4 py-2 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-brand-slate mb-1">Servicio de interés</label>
+                <select name="servicio" required
+                  class="w-full px-4 py-2 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none">
+
+                  <option value="">Selecciona una opción</option>
+                  <option value="Diagnóstico Gratuito">Diagnóstico Gratuito</option>
+                  <option value="Diseño Web">Diseño Web</option>
+                  <option value="Marketing Digital">Marketing Digital</option>
+                  <option value="Branding">Branding y Diseño Gráfico</option>
+                  <option value="Solución Integral">Solución Integral</option>
+
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-brand-slate mb-1">Mensaje</label>
+                <textarea name="mensaje" rows="4" required class="w-full px-4 py-2 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none"></textarea>
+              </div>
+              <button type="submit" class="w-full bg-brand-blue text-white py-3 rounded-xl font-bold hover:bg-brand-navy transition">
+                Enviar Mensaje
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== PÁGINA 7: AVISO DE PRIVACIDAD ==================== -->
+    <div id="privacidad" class="page-section">
+      <section class="bg-brand-cream py-20 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 class="text-4xl font-bold text-brand-blue mb-4">Aviso de Privacidad</h1>
+          <p class="text-lg text-brand-slate">Última actualización: Junio 2026</p>
+        </div>
+      </section>
+
+      <section class="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white p-8 md:p-12 rounded-3xl border border-white/10 shadow-premium space-y-8">
+          <p class="text-brand-slate leading-relaxed">En Mundo Gráfico, valoramos y respetamos la privacidad de nuestros usuarios y clientes. El presente Aviso de Privacidad tiene como finalidad informar cómo recopilamos, utilizamos y protegemos la información personal que nos proporcionas a través de nuestro sitio web.</p>
+
+          <div>
+            <h2 class="text-2xl font-bold text-brand-blue mb-3">1. Responsable del tratamiento de datos</h2>
+            <p class="text-brand-slate leading-relaxed">Mundo Gráfico es responsable del tratamiento de los datos personales recabados a través de este sitio web.</p>
+            <p class="text-brand-slate leading-relaxed mt-3">Para cualquier asunto relacionado con la privacidad y protección de datos, puedes contactarnos a través de:</p>
+            <p class="text-brand-slate leading-relaxed mt-3">Correo electrónico: <a href="mailto:contacto@mundografico.com.mx" class="text-brand-orange hover:underline">contacto@mundografico.com.mx</a></p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-brand-blue mb-3">2. Datos personales que recopilamos</h2>
+            <p class="text-brand-slate leading-relaxed mb-3">Podemos recopilar la siguiente información:</p>
+            <ul class="space-y-2 text-brand-slate">
+              <li>Nombre completo.</li>
+              <li>Correo electrónico.</li>
+              <li>Número telefónico.</li>
+              <li>Nombre de empresa o negocio.</li>
+              <li>Información proporcionada mediante formularios de contacto.</li>
+              <li>Datos técnicos de navegación (dirección IP, navegador, dispositivo y cookies).</li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-brand-blue mb-3">3. Finalidad del tratamiento de datos</h2>
+            <p class="text-brand-slate leading-relaxed mb-3">Los datos personales serán utilizados para:</p>
+            <ul class="space-y-2 text-brand-slate">
+              <li>Responder solicitudes de información.</li>
+              <li>Proporcionar cotizaciones y propuestas comerciales.</li>
+              <li>Dar seguimiento a proyectos y servicios contratados.</li>
+              <li>Enviar información relacionada con nuestros servicios.</li>
+              <li>Mejorar la experiencia de navegación en nuestro sitio web.</li>
+              <li>Cumplir con obligaciones legales aplicables.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-brand-blue mb-3">4. Protección de la información</h2>
+            <p class="text-brand-slate leading-relaxed">Implementamos medidas técnicas, administrativas y de seguridad razonables para proteger la información contra accesos no autorizados, pérdida, alteración o divulgación indebida.</p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-brand-blue mb-3">5. Compartición de información</h2>
+            <p class="text-brand-slate leading-relaxed mb-3">Mundo Gráfico no vende ni comercializa datos personales a terceros.</p>
+            <p class="text-brand-slate leading-relaxed mb-3">La información únicamente podrá ser compartida cuando:</p>
+            <ul class="space-y-2 text-brand-slate">
+              <li>Sea requerida por una autoridad competente.</li>
+              <li>Sea necesaria para la prestación de servicios contratados.</li>
+              <li>Exista una obligación legal aplicable.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-brand-blue mb-3">6. Derechos ARCO</h2>
+            <p class="text-brand-slate leading-relaxed mb-3">De conformidad con la legislación mexicana, el titular de los datos podrá ejercer sus derechos de:</p>
+            <ul class="space-y-2 text-brand-slate">
+              <li>Acceso.</li>
+              <li>Rectificación.</li>
+              <li>Cancelación.</li>
+              <li>Oposición.</li>
+            </ul>
+            <p class="text-brand-slate leading-relaxed mt-3">Para ejercer estos derechos, deberá enviar una solicitud al correo electrónico indicado anteriormente.</p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-brand-blue mb-3">7. Modificaciones al aviso</h2>
+            <p class="text-brand-slate leading-relaxed">Mundo Gráfico se reserva el derecho de modificar este Aviso de Privacidad en cualquier momento. Los cambios serán publicados en esta misma página.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== PÁGINA 8: POLÍTICA DE COOKIES ==================== -->
+    <div id="cookies" class="page-section">
+      <section class="bg-brand-cream py-20 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 class="text-4xl font-bold text-brand-blue mb-4">Política de Cookies</h1>
+          <p class="text-lg text-brand-slate">Última actualización: Junio 2026</p>
+        </div>
+      </section>
+
+      <section class="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white p-8 md:p-12 rounded-3xl border border-white/10 shadow-premium space-y-8">
+          <div>
+            <h2 class="text-2xl font-bold text-brand-blue mb-3">¿Qué son las cookies?</h2>
+            <p class="text-brand-slate leading-relaxed">Las cookies son pequeños archivos de texto almacenados en tu dispositivo cuando visitas un sitio web. Su función es mejorar la experiencia del usuario y recopilar información sobre el uso del sitio.</p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-brand-blue mb-3">Tipos de cookies que utilizamos</h2>
+            <div class="space-y-6">
+              <div>
+                <h3 class="text-xl font-bold text-brand-blue mb-2">Cookies esenciales</h3>
+                <p class="text-brand-slate leading-relaxed">Son necesarias para el correcto funcionamiento del sitio web y no pueden desactivarse en nuestros sistemas.</p>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-brand-blue mb-2">Cookies de rendimiento y análisis</h3>
+                <p class="text-brand-slate leading-relaxed mb-3">Nos permiten conocer cómo interactúan los visitantes con nuestro sitio web para mejorar su funcionamiento y contenido.</p>
+                <p class="text-brand-slate leading-relaxed mb-2">Ejemplos:</p>
+                <ul class="space-y-2 text-brand-slate">
+                  <li>Google Analytics.</li>
+                  <li>Herramientas de análisis de tráfico.</li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-brand-blue mb-2">Cookies de funcionalidad</h3>
+                <p class="text-brand-slate leading-relaxed">Permiten recordar preferencias del usuario, como idioma o configuraciones personalizadas.</p>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-brand-blue mb-2">Cookies de marketing</h3>
+                <p class="text-brand-slate leading-relaxed">Pueden utilizarse para mostrar publicidad relevante basada en los intereses del usuario.</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-brand-blue mb-3">Gestión de cookies</h2>
+            <p class="text-brand-slate leading-relaxed mb-3">Puedes configurar tu navegador para:</p>
+            <ul class="space-y-2 text-brand-slate">
+              <li>Aceptar todas las cookies.</li>
+              <li>Rechazar todas las cookies.</li>
+              <li>Recibir una notificación antes de aceptar una cookie.</li>
+            </ul>
+            <p class="text-brand-slate leading-relaxed mt-3">Ten en cuenta que algunas funciones del sitio pueden verse afectadas si desactivas las cookies.</p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-brand-blue mb-3">Cookies de terceros</h2>
+            <p class="text-brand-slate leading-relaxed">Algunos servicios integrados en nuestro sitio pueden utilizar cookies de terceros, incluyendo herramientas de análisis, redes sociales o plataformas publicitarias.</p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-brand-blue mb-3">Cambios en esta política</h2>
+            <p class="text-brand-slate leading-relaxed">Nos reservamos el derecho de actualizar esta Política de Cookies cuando sea necesario. Cualquier modificación será publicada en esta misma página.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-brand-navy text-white py-12 mt-12 border-t border-brand-navy/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-8">
+        
+        <!-- Marca -->
+        <div>
+          <div class="h-14 w-14 rounded-full overflow-hidden bg-white mb-4">
+            <img src="assets/logomundografico.png" alt="Mundo Gráfico" class="h-full w-full object-cover">
+          </div>
+          <span class="font-bold text-2xl tracking-tight text-white mb-4 block">Mundo<span class="text-brand-orange">Gráfico</span></span>
+          <p class="text-brand-cream text-sm leading-relaxed mb-6">Digitalizamos y hacemos crecer tu negocio.</p>
+          <div class="flex space-x-4">
+            <a href="https://www.facebook.com/profile.php?id=61551752049588" target="_blank" class="w-10 h-10 rounded-full bg-brand-navy flex items-center justify-center text-brand-cream hover:bg-brand-orange hover:text-white transition" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/mundografico5?igsh=MTBxeDc4Z3VycnQ3dA%3D%3D&utm_source=qr" target="_blank" class="w-10 h-10 rounded-full bg-brand-navy flex items-center justify-center text-brand-cream hover:bg-brand-orange hover:text-white transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@mundografico01?lang=es-419" target="_blank" class="w-10 h-10 rounded-full bg-brand-navy flex items-center justify-center text-brand-cream hover:bg-brand-orange hover:text-white transition" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <!-- Navegación -->
+        <div>
+          <h4 class="font-bold text-lg mb-4">Navegación</h4>
+          <ul class="space-y-2">
+            <li><a href="#" onclick="navigate('inicio')" class="text-brand-slate hover:text-brand-orange transition">Inicio</a></li>
+            <li><a href="#" onclick="navigate('servicios')" class="text-brand-slate hover:text-brand-orange transition">Servicios</a></li>
+            <li><a href="#" onclick="navigate('cotizaciones')" class="text-brand-slate hover:text-brand-orange transition">Cotizaciones</a></li>
+            <li><a href="#" onclick="navigate('servicios')" class="text-brand-slate hover:text-brand-orange transition">Proyectos</a></li>
+            <li><a href="#" onclick="navigate('nosotros')" class="text-brand-slate hover:text-brand-orange transition">Nosotros</a></li>
+            <li><a href="#" onclick="navigate('diagnostico')" class="text-brand-slate hover:text-brand-orange transition">Diagnóstico Gratuito</a></li>
+            <li><a href="#" onclick="navigate('contacto')" class="text-brand-slate hover:text-brand-orange transition">Contacto</a></li>
+          </ul>
+        </div>
+
+        <!-- Servicios -->
+        <div>
+          <h4 class="font-bold text-lg mb-4">Servicios</h4>
+          <ul class="space-y-3">
+            <li class="flex items-start text-brand-slate">
+              <i class="fas fa-briefcase mt-1 mr-3 text-brand-orange"></i>
+              <span>Diseño y Modernización Web</span>
+            </li>
+            <li class="flex items-start text-brand-slate">
+              <i class="fas fa-briefcase mt-1 mr-3 text-brand-orange"></i>
+              <span>Automatización e Inteligencia Artificial</span>
+            </li>
+            <li class="flex items-start text-brand-slate">
+              <i class="fas fa-briefcase mt-1 mr-3 text-brand-orange"></i>
+              <span>Marketing de tu Negocio</span>
+            </li>
+            <li class="flex items-start text-brand-slate">
+              <i class="fas fa-briefcase mt-1 mr-3 text-brand-orange"></i>
+              <span>Creación y Edición de Contenido</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contacto y Legal -->
+        <div>
+          <h4 class="font-bold text-lg mb-4">Contacto</h4>
+          <ul class="space-y-3">
+            <li class="flex items-start text-brand-slate">
+              <i class="fab fa-whatsapp mt-1 mr-3 text-brand-orange"></i> 
+              <a href="https://wa.me/524271680265" target="_blank" class="hover:text-white transition">+52 427 168 02 65</a>
+            </li>
+            <li class="flex items-start text-brand-slate">
+              <i class="fas fa-envelope mt-1 mr-3 text-brand-orange"></i> 
+              <a href="mailto:mundo.graficoco1@gmail.com" class="hover:text-white transition">mundo.graficoco1@gmail.com</a>
+            </li>
+          </ul>
+
+          <h4 class="font-bold text-lg mt-8 mb-4">Legal</h4>
+          <ul class="space-y-3">
+            <li class="flex items-start text-brand-slate">
+              <i class="fas fa-scale-balanced mt-1 mr-3 text-brand-orange"></i>
+              <a href="#" onclick="navigate('privacidad')" class="hover:text-white transition">Aviso de Privacidad</a>
+            </li>
+            <li class="flex items-start text-brand-slate">
+              <i class="fas fa-cookie-bite mt-1 mr-3 text-brand-orange"></i>
+              <a href="#" onclick="navigate('cookies')" class="hover:text-white transition">Política de Cookies</a>
+            </li>
+          </ul>
+        </div>
+        
+      </div>
+      
+      <div class="border-t border-brand-navy/80 mt-12 pt-8 text-center text-brand-slate text-sm">
+        <p>&copy; 2026 Mundo Gráfico. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lógica simple de navegación -->
+  <script>
+    // Función para navegar entre secciones (Single Page Application simulada)
+    function navigate(sectionId) {
+      // Ocultar todas las secciones
+      document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      // Mostrar la sección solicitada
+      document.getElementById(sectionId).classList.add('active');
+      // Subir al inicio de la página
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Función para abrir/cerrar menú móvil
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Asignar evento al botón de menú móvil
+    document.getElementById('mobile-menu-btn').addEventListener('click', toggleMenu);
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <script>
+    emailjs.init({
+      publicKey: "1QardZvq0xbrhhn6M"
+    });
+  </script>
+
+  <script>
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      emailjs.sendForm(
+        "service_0g2jom5",
+        "template_ziumwpn",
+        this
+      )
+      .then(function(response) {
+        alert("Mensaje enviado correctamente");
+        console.log("SUCCESS!", response.status, response.text);
+
+        document.getElementById("contact-form").reset();
+      }, function(error) {
+        alert("Error al enviar el mensaje");
+        console.log("FAILED...", error);
+      });
+    });
+  </script>
+
+  <!-- TODO TU HTML (formularios, secciones, etc.) -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <script>
+  emailjs.init({
+    publicKey: "1QardZvq0xbrhhn6M"
+  });
+  </script>
+
+  <script>
+  document.getElementById("diagnostico-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    emailjs.sendForm(
+      "service_0g2jom5",
+      "template_3xr4mgd",
+      this
+    ).then(() => {
+      alert("Diagnóstico enviado correctamente");
+      this.reset();
+    }).catch((error) => {
+      alert("Error al enviar");
+      console.log(error);
+    });
+  });
+  </script>
+
+</body>
+</html>
+
