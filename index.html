@@ -141,6 +141,36 @@
   gtag('js', new Date());
   gtag('config', 'G-VKZ2LEC42W');
 </script>
+<script>
+  (function() {
+    const whatsappHosts = ['wa.me', 'api.whatsapp.com'];
+
+    function isWhatsAppLink(href) {
+      if (!href) return false;
+      try {
+        const url = new URL(href, window.location.href);
+        return whatsappHosts.includes(url.hostname);
+      } catch (error) {
+        return false;
+      }
+    }
+
+    function sendWhatsAppEvent(link) {
+      if (typeof gtag !== 'function') return;
+      gtag('event', 'click_whatsapp', {
+        event_category: 'Contacto',
+        event_label: link.href
+      });
+    }
+
+    document.addEventListener('click', function(event) {
+      const anchor = event.target.closest('a');
+      if (!anchor || !anchor.href) return;
+      if (!isWhatsAppLink(anchor.href)) return;
+      sendWhatsAppEvent(anchor);
+    });
+  })();
+</script>
 </head>
 <body class="bg-brand-cream text-brand-slate font-sans selection:bg-brand-orange selection:text-white">
 
