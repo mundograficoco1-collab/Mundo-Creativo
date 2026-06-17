@@ -1212,21 +1212,22 @@
         alert("Mensaje enviado correctamente");
         console.log("SUCCESS!", response.status, response.text);
 
-        const formData = new FormData(this);
         fetch("https://script.google.com/macros/s/AKfycbzqMHNRrx5dvywAciswU6dO8bRs_SKr0kHoBWBxtgBRyfqB-Hhhhk97m_nKFlKwe2R6/exec", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
-            nombre: formData.get("nombre") || "",
-            whatsapp: formData.get("telefono") || "",
-            email: formData.get("email") || "",
-            negocio: "",
-            mensaje: formData.get("mensaje") || "",
-            fuente: "Formulario Web - Contacto"
+            nombre: document.querySelector('input[name="nombre"]')?.value || "",
+            whatsapp: document.querySelector('input[name="telefono"]')?.value || "",
+            negocio: document.querySelector('input[name="negocio"]')?.value || "",
+            interes: document.querySelector('select[name="servicio"]')?.value || "",
+            principalObjetivo: "",
+            informacionAdicional: document.querySelector('textarea[name="mensaje"]')?.value || "",
+            fuente: "Formulario Web"
           })
-        });
+        })
+        .catch(err => console.error("Error enviando a Sheets:", err));
 
         document.getElementById("contact-form").reset();
       }, function(error) {
@@ -1257,22 +1258,22 @@
     ).then(() => {
       alert("Diagnóstico enviado correctamente");
 
-      const formElement = document.getElementById("diagnostico-form");
-      const formData = new FormData(formElement);
       fetch("https://script.google.com/macros/s/AKfycbzqMHNRrx5dvywAciswU6dO8bRs_SKr0kHoBWBxtgBRyfqB-Hhhhk97m_nKFlKwe2R6/exec", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          nombre: formData.get("nombre") || "",
-          whatsapp: formData.get("telefono") || "",
-          email: "",
-          negocio: formData.get("negocio") || "",
-          mensaje: formData.get("mensaje") || "",
-          fuente: "Formulario Web - Diagnóstico"
+          nombre: document.querySelector('#diagnostico-form input[name="nombre"]')?.value || "",
+          whatsapp: document.querySelector('#diagnostico-form input[name="telefono"]')?.value || "",
+          negocio: document.querySelector('#diagnostico-form input[name="negocio"]')?.value || "",
+          interes: "",
+          principalObjetivo: document.querySelector('#diagnostico-form textarea[name="mensaje"]')?.value || "",
+          informacionAdicional: "",
+          fuente: "Formulario Web"
         })
-      });
+      })
+      .catch(err => console.error("Error enviando a Sheets:", err));
 
       this.reset();
     }).catch((error) => {
