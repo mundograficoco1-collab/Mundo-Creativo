@@ -1214,20 +1214,18 @@
 
         fetch("https://script.google.com/macros/s/AKfycbzqMHNRrx5dvywAciswU6dO8bRs_SKr0kHoBWBxtgBRyfqB-Hhhhk97m_nKFlKwe2R6/exec", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
           body: JSON.stringify({
             nombre: document.querySelector('input[name="nombre"]')?.value || "",
-            whatsapp: document.querySelector('input[name="telefono"]')?.value || "",
+            whatsapp: document.querySelector('input[name="whatsapp"]')?.value || "",
             negocio: document.querySelector('input[name="negocio"]')?.value || "",
-            interes: document.querySelector('select[name="servicio"]')?.value || "",
-            principalObjetivo: "",
-            informacionAdicional: document.querySelector('textarea[name="mensaje"]')?.value || "",
-            fuente: "Formulario Web"
+            interes: document.querySelector('input[name="interes"]')?.value || "",
+            principalObjetivo: document.querySelector('input[name="principalObjetivo"]')?.value || "",
+            informacionAdicional: document.querySelector('textarea[name="mensaje"]')?.value || ""
           })
         })
-        .catch(err => console.error("Error enviando a Sheets:", err));
+        .then(res => res.text())
+        .then(data => console.log("Sheets response:", data))
+        .catch(err => console.error("Error Sheets:", err));
 
         document.getElementById("contact-form").reset();
       }, function(error) {
@@ -1260,20 +1258,18 @@
 
       fetch("https://script.google.com/macros/s/AKfycbzqMHNRrx5dvywAciswU6dO8bRs_SKr0kHoBWBxtgBRyfqB-Hhhhk97m_nKFlKwe2R6/exec", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
         body: JSON.stringify({
-          nombre: document.querySelector('#diagnostico-form input[name="nombre"]')?.value || "",
-          whatsapp: document.querySelector('#diagnostico-form input[name="telefono"]')?.value || "",
-          negocio: document.querySelector('#diagnostico-form input[name="negocio"]')?.value || "",
-          interes: "",
-          principalObjetivo: document.querySelector('#diagnostico-form textarea[name="mensaje"]')?.value || "",
-          informacionAdicional: "",
-          fuente: "Formulario Web"
+          nombre: document.querySelector('input[name="nombre"]')?.value || "",
+          whatsapp: document.querySelector('input[name="whatsapp"]')?.value || "",
+          negocio: document.querySelector('input[name="negocio"]')?.value || "",
+          interes: document.querySelector('input[name="interes"]')?.value || "",
+          principalObjetivo: document.querySelector('input[name="principalObjetivo"]')?.value || "",
+          informacionAdicional: document.querySelector('textarea[name="mensaje"]')?.value || ""
         })
       })
-      .catch(err => console.error("Error enviando a Sheets:", err));
+      .then(res => res.text())
+      .then(data => console.log("Sheets response:", data))
+      .catch(err => console.error("Error Sheets:", err));
 
       this.reset();
     }).catch((error) => {
