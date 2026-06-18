@@ -1256,20 +1256,31 @@
     ).then(() => {
       alert("Diagnóstico enviado correctamente");
 
+      console.log("Iniciando envío a Google Sheets");
+
       fetch("https://script.google.com/macros/s/AKfycbzqMHNRrx5dvywAciswU6dO8bRs_SKr0kHoBWBxtgBRyfqB-Hhhhk97m_nKFlKwe2R6/exec", {
         method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
         body: JSON.stringify({
-          nombre: document.querySelector('input[name="nombre"]')?.value || "",
-          whatsapp: document.querySelector('input[name="whatsapp"]')?.value || "",
-          negocio: document.querySelector('input[name="negocio"]')?.value || "",
-          interes: document.querySelector('input[name="interes"]')?.value || "",
-          principalObjetivo: document.querySelector('input[name="principalObjetivo"]')?.value || "",
-          informacionAdicional: document.querySelector('textarea[name="mensaje"]')?.value || ""
+          nombre: document.querySelector('#diagnostico-form input[name="nombre"]')?.value || "",
+          negocio: document.querySelector('#diagnostico-form input[name="negocio"]')?.value || "",
+          actividad: document.querySelector('#diagnostico-form input[name="actividad"]')?.value || "",
+          telefono: document.querySelector('#diagnostico-form input[name="telefono"]')?.value || "",
+          mensaje: document.querySelector('#diagnostico-form textarea[name="mensaje"]')?.value || ""
         })
       })
-      .then(res => res.text())
-      .then(data => console.log("Sheets response:", data))
-      .catch(err => console.error("Error Sheets:", err));
+      .then(response => {
+        console.log("Status Apps Script:", response.status);
+        return response.text();
+      })
+      .then(text => {
+        console.log("Respuesta Apps Script:", text);
+      })
+      .catch(error => {
+        console.error("Error Apps Script:", error);
+      });
 
       this.reset();
     }).catch((error) => {
