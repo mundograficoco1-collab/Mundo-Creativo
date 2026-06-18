@@ -1214,13 +1214,16 @@
 
         fetch("https://script.google.com/macros/s/AKfycbzqMHNRrx5dvywAciswU6dO8bRs_SKr0kHoBWBxtgBRyfqB-Hhhhk97m_nKFlKwe2R6/exec", {
           method: "POST",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
           body: JSON.stringify({
-            nombre: document.querySelector('input[name="nombre"]')?.value || "",
-            whatsapp: document.querySelector('input[name="whatsapp"]')?.value || "",
-            negocio: document.querySelector('input[name="negocio"]')?.value || "",
-            interes: document.querySelector('input[name="interes"]')?.value || "",
-            principalObjetivo: document.querySelector('input[name="principalObjetivo"]')?.value || "",
-            informacionAdicional: document.querySelector('textarea[name="mensaje"]')?.value || ""
+            origen: "Contacto Web",
+            nombre: document.querySelector('#contact-form input[name="nombre"]')?.value || "",
+            whatsapp: document.querySelector('#contact-form input[name="telefono"]')?.value || "",
+            email: document.querySelector('#contact-form input[name="email"]')?.value || "",
+            servicio: document.querySelector('#contact-form select[name="servicio"]')?.value || "",
+            mensaje: document.querySelector('#contact-form textarea[name="mensaje"]')?.value || ""
           })
         })
         .then(res => res.text())
@@ -1264,11 +1267,12 @@
           "Content-Type": "text/plain;charset=utf-8"
         },
         body: JSON.stringify({
+          origen: "Diagnóstico",
           nombre: document.querySelector('#diagnostico-form input[name="nombre"]')?.value || "",
+          whatsapp: document.querySelector('#diagnostico-form input[name="telefono"]')?.value || "",
           negocio: document.querySelector('#diagnostico-form input[name="negocio"]')?.value || "",
-          actividad: document.querySelector('#diagnostico-form input[name="actividad"]')?.value || "",
-          telefono: document.querySelector('#diagnostico-form input[name="telefono"]')?.value || "",
-          mensaje: document.querySelector('#diagnostico-form textarea[name="mensaje"]')?.value || ""
+          giro: document.querySelector('#diagnostico-form input[name="actividad"]')?.value || "",
+          problema: document.querySelector('#diagnostico-form textarea[name="mensaje"]')?.value || ""
         })
       })
       .then(response => {
