@@ -825,13 +825,7 @@
               </div>
               <div>
                 <label class="block text-sm font-medium text-brand-slate mb-2">Servicio de interés *</label>
-                <select name="servicio" required class="w-full px-4 py-3 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none">
-                  <option value="Diagnóstico Gratuito" selected>Diagnóstico Gratuito</option>
-                  <option value="Diseño Web">Diseño Web</option>
-                  <option value="Marketing Digital">Marketing Digital</option>
-                  <option value="Branding">Branding y Diseño Gráfico</option>
-                  <option value="Solución Integral">Solución Integral</option>
-                </select>
+                <input type="text" name="servicio" value="Diagnóstico Gratuito" readonly class="w-full px-4 py-3 rounded-xl bg-brand-cream/20 border-2 border-brand-blue/20 shadow-sm outline-none cursor-not-allowed text-brand-slate/80">
               </div>
             </div>
 
@@ -1321,7 +1315,7 @@
           giro: document.querySelector('#diagnostico-form input[name="actividad"]')?.value || "",
           whatsapp: document.querySelector('#diagnostico-form input[name="telefono"]')?.value || "",
           email: document.querySelector('#diagnostico-form input[name="email"]')?.value || "",
-          servicio: document.querySelector('#diagnostico-form select[name="servicio"]')?.value || "",
+          servicio: document.querySelector('#diagnostico-form [name="servicio"]')?.value || "",
           mensaje: document.querySelector('#diagnostico-form textarea[name="mensaje"]')?.value || "",
           problema: document.querySelector('#diagnostico-form textarea[name="mensaje"]')?.value || ""
         })
@@ -1350,7 +1344,7 @@
           giro: document.querySelector('#diagnostico-form input[name="actividad"]')?.value || "",
           whatsapp: document.querySelector('#diagnostico-form input[name="telefono"]')?.value || "",
           email: document.querySelector('#diagnostico-form input[name="email"]')?.value || "",
-          servicio: document.querySelector('#diagnostico-form select[name="servicio"]')?.value || "",
+          servicio: document.querySelector('#diagnostico-form [name="servicio"]')?.value || "",
           mensaje: document.querySelector('#diagnostico-form textarea[name="mensaje"]')?.value || "",
           problema: document.querySelector('#diagnostico-form textarea[name="mensaje"]')?.value || ""
         })
