@@ -810,7 +810,7 @@
             <div class="grid md:grid-cols-2 gap-5">
               <div>
                 <label class="block text-sm font-medium text-brand-slate mb-2">¿A qué se dedica tu negocio? *</label>
-                <input type="text" name="actividad" required class="w-full px-4 py-3 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none">
+                <input type="text" name="actividad" required class="w-full px-4 py-3 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none" placeholder="Ej. Venta de herramientas">
               </div>
               <div>
                 <label class="block text-sm font-medium text-brand-slate mb-2">WhatsApp *</label>
@@ -818,9 +818,26 @@
               </div>
             </div>
 
+            <div class="grid md:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-sm font-medium text-brand-slate mb-2">Correo electrónico *</label>
+                <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none" placeholder="Ej. ana@negocio.com">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-brand-slate mb-2">Servicio de interés *</label>
+                <select name="servicio" required class="w-full px-4 py-3 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none">
+                  <option value="Diagnóstico Gratuito" selected>Diagnóstico Gratuito</option>
+                  <option value="Diseño Web">Diseño Web</option>
+                  <option value="Marketing Digital">Marketing Digital</option>
+                  <option value="Branding">Branding y Diseño Gráfico</option>
+                  <option value="Solución Integral">Solución Integral</option>
+                </select>
+              </div>
+            </div>
+
             <div>
               <label class="block text-sm font-medium text-brand-slate mb-2">¿Cuál es el principal problema de tu negocio actualmente?</label>
-              <textarea name="mensaje" rows="4" class="w-full px-4 py-3 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none"></textarea>
+              <textarea name="mensaje" rows="4" class="w-full px-4 py-3 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none" placeholder="Cuéntanos un poco sobre tu situación..."></textarea>
             </div>
 
             <button type="submit" class="w-full relative overflow-hidden bg-brand-orange text-white py-4 rounded-xl text-lg font-bold hover:bg-brand-amber transition shadow-lg shadow-orange-500/30 mt-4 btn-shine">
@@ -886,35 +903,39 @@
             <h3 class="text-xl font-bold text-brand-blue mb-6">Envíanos un mensaje</h3>
             <form id="contact-form" class="space-y-4">
               <div>
-                <label class="block text-sm font-medium text-brand-slate mb-1">Nombre</label>
-                <input type="text" name="nombre" required class="w-full px-4 py-2 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none">
+                <label class="block text-sm font-medium text-brand-slate mb-1">Nombre *</label>
+                <input type="text" name="nombre" required class="w-full px-4 py-2 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none" placeholder="Ej. Ana Pérez">
               </div>
               <div>
-                <label class="block text-sm font-medium text-brand-slate mb-1">Correo electrónico</label>
-                <input type="email" name="email" required class="w-full px-4 py-2 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none">
+                <label class="block text-sm font-medium text-brand-slate mb-1">Nombre del negocio *</label>
+                <input type="text" name="negocio" required class="w-full px-4 py-2 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none" placeholder="Ej. Ferretería El Clavo">
               </div>
               <div>
-                <label class="block text-sm font-medium text-brand-slate mb-1">Teléfono</label>
-                <input type="tel" name="telefono" required
-                  class="w-full px-4 py-2 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none">
+                <label class="block text-sm font-medium text-brand-slate mb-1">¿A qué se dedica tu negocio? *</label>
+                <input type="text" name="actividad" required class="w-full px-4 py-2 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none" placeholder="Ej. Venta de herramientas">
               </div>
               <div>
-                <label class="block text-sm font-medium text-brand-slate mb-1">Servicio de interés</label>
-                <select name="servicio" required
-                  class="w-full px-4 py-2 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none">
-
+                <label class="block text-sm font-medium text-brand-slate mb-1">WhatsApp *</label>
+                <input type="tel" name="telefono" required class="w-full px-4 py-2 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none" placeholder="Ej. 442 000 0000">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-brand-slate mb-1">Correo electrónico *</label>
+                <input type="email" name="email" required class="w-full px-4 py-2 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none" placeholder="Ej. ana@negocio.com">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-brand-slate mb-1">Servicio de interés *</label>
+                <select name="servicio" required class="w-full px-4 py-2 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none">
                   <option value="">Selecciona una opción</option>
                   <option value="Diagnóstico Gratuito">Diagnóstico Gratuito</option>
                   <option value="Diseño Web">Diseño Web</option>
                   <option value="Marketing Digital">Marketing Digital</option>
                   <option value="Branding">Branding y Diseño Gráfico</option>
                   <option value="Solución Integral">Solución Integral</option>
-
                 </select>
               </div>
               <div>
                 <label class="block text-sm font-medium text-brand-slate mb-1">Mensaje</label>
-                <textarea name="mensaje" rows="4" required class="w-full px-4 py-2 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none"></textarea>
+                <textarea name="mensaje" rows="4" class="w-full px-4 py-2 rounded-xl bg-brand-cream/40 border-2 border-brand-blue/25 shadow-sm focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition outline-none" placeholder="Cuéntanos un poco sobre tu situación..."></textarea>
               </div>
               <button type="submit" class="w-full bg-brand-blue text-white py-3 rounded-xl font-bold hover:bg-brand-navy transition">
                 Enviar Mensaje
@@ -1221,10 +1242,13 @@
           body: JSON.stringify({
             origen: "Contacto Web",
             nombre: document.querySelector('#contact-form input[name="nombre"]')?.value || "",
+            negocio: document.querySelector('#contact-form input[name="negocio"]')?.value || "",
+            giro: document.querySelector('#contact-form input[name="actividad"]')?.value || "",
             whatsapp: document.querySelector('#contact-form input[name="telefono"]')?.value || "",
             email: document.querySelector('#contact-form input[name="email"]')?.value || "",
             servicio: document.querySelector('#contact-form select[name="servicio"]')?.value || "",
-            mensaje: document.querySelector('#contact-form textarea[name="mensaje"]')?.value || ""
+            mensaje: document.querySelector('#contact-form textarea[name="mensaje"]')?.value || "",
+            problema: document.querySelector('#contact-form textarea[name="mensaje"]')?.value || ""
           })
         })
         .then(res => res.text())
@@ -1240,10 +1264,13 @@
           body: JSON.stringify({
             origen: "Contacto Web",
             nombre: document.querySelector('#contact-form input[name="nombre"]')?.value || "",
+            negocio: document.querySelector('#contact-form input[name="negocio"]')?.value || "",
+            giro: document.querySelector('#contact-form input[name="actividad"]')?.value || "",
             whatsapp: document.querySelector('#contact-form input[name="telefono"]')?.value || "",
             email: document.querySelector('#contact-form input[name="email"]')?.value || "",
             servicio: document.querySelector('#contact-form select[name="servicio"]')?.value || "",
-            mensaje: document.querySelector('#contact-form textarea[name="mensaje"]')?.value || ""
+            mensaje: document.querySelector('#contact-form textarea[name="mensaje"]')?.value || "",
+            problema: document.querySelector('#contact-form textarea[name="mensaje"]')?.value || ""
           })
         })
         .then(res => res.text())
@@ -1290,9 +1317,12 @@
         body: JSON.stringify({
           origen: "Diagnóstico",
           nombre: document.querySelector('#diagnostico-form input[name="nombre"]')?.value || "",
-          whatsapp: document.querySelector('#diagnostico-form input[name="telefono"]')?.value || "",
           negocio: document.querySelector('#diagnostico-form input[name="negocio"]')?.value || "",
           giro: document.querySelector('#diagnostico-form input[name="actividad"]')?.value || "",
+          whatsapp: document.querySelector('#diagnostico-form input[name="telefono"]')?.value || "",
+          email: document.querySelector('#diagnostico-form input[name="email"]')?.value || "",
+          servicio: document.querySelector('#diagnostico-form select[name="servicio"]')?.value || "",
+          mensaje: document.querySelector('#diagnostico-form textarea[name="mensaje"]')?.value || "",
           problema: document.querySelector('#diagnostico-form textarea[name="mensaje"]')?.value || ""
         })
       })
@@ -1316,9 +1346,12 @@
         body: JSON.stringify({
           origen: "Diagnóstico",
           nombre: document.querySelector('#diagnostico-form input[name="nombre"]')?.value || "",
-          whatsapp: document.querySelector('#diagnostico-form input[name="telefono"]')?.value || "",
           negocio: document.querySelector('#diagnostico-form input[name="negocio"]')?.value || "",
           giro: document.querySelector('#diagnostico-form input[name="actividad"]')?.value || "",
+          whatsapp: document.querySelector('#diagnostico-form input[name="telefono"]')?.value || "",
+          email: document.querySelector('#diagnostico-form input[name="email"]')?.value || "",
+          servicio: document.querySelector('#diagnostico-form select[name="servicio"]')?.value || "",
+          mensaje: document.querySelector('#diagnostico-form textarea[name="mensaje"]')?.value || "",
           problema: document.querySelector('#diagnostico-form textarea[name="mensaje"]')?.value || ""
         })
       })
