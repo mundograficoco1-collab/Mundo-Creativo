@@ -11,10 +11,10 @@
   <meta property="og:description" content="Estrategia y acompañamiento personalizado para tu empresa.">
   <meta property="og:type" content="website">
   
-  <!-- Preconnect & Fonts: Poppins -->
+  <!-- Preconnect & Fonts: Poppins & Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
   
   <!-- Icons FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -26,22 +26,25 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Poppins', 'sans-serif']
+            sans: ['Poppins', 'sans-serif'],
+            display: ['Outfit', 'sans-serif']
           },
           colors: {
             brand: {
-              blue: '#062B5F',
-              navy: '#031A3A',
+              blue: '#0F172A',
+              navy: '#020617',
               orange: '#F59A1B',
-              amber: '#FDBA3B',
-              cream: '#FFF7E8',
+              amber: '#F59A1B',
+              cream: '#FAF9F6',
               gray: '#F8FAFC',
-              slate: '#475569',
+              slate: '#64748B',
             }
           },
           boxShadow: {
-            'premium': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
-            'premium-hover': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+            'premium': '0 8px 30px rgba(0, 0, 0, 0.03)',
+            'premium-hover': '0 20px 40px rgba(15, 23, 42, 0.05)',
+            'glow': '0 0 20px rgba(245, 154, 27, 0.25)',
+            'input-focus': '0 0 0 4px rgba(245, 154, 27, 0.15)'
           }
         }
       }
@@ -53,58 +56,73 @@
     body {
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      background-color: #FAF9F6;
+    }
+    h1, h2, h3, .font-display {
+      font-family: 'Outfit', 'Poppins', sans-serif !important;
     }
     /* Sistema de "Single Page Application" simulado */
     .page-section {
       display: none;
       opacity: 0;
-      transition: opacity 0.4s ease-in-out;
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .page-section.active {
       display: block;
       opacity: 1;
-      animation: fadeIn 0.5s ease-out forwards;
+      animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+    @keyframes slideUpFade {
+      from { opacity: 0; transform: translateY(15px); }
       to { opacity: 1; transform: translateY(0); }
     }
     .glass-nav {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
+      background: rgba(250, 249, 246, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.04);
     }
     .gradient-text {
-      background: linear-gradient(to right, #062B5F, #F59A1B);
-      background-clip: text;
+      background: linear-gradient(135deg, #0F172A 20%, #F59A1B 100%);
       -webkit-background-clip: text;
-      -moz-background-clip: text;
-      color: transparent;
       -webkit-text-fill-color: transparent;
     }
-    /* Premium Button Shine Effect */
-    .btn-shine {
+    /* Premium Button Shine & Scale Effect */
+    .btn-tech, .btn-shine {
       position: relative;
       overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .btn-shine::after {
+    .btn-tech:hover, .btn-shine:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(245, 154, 27, 0.3);
+    }
+    .btn-tech:active, .btn-shine:active {
+      transform: translateY(0);
+    }
+    .btn-tech::after, .btn-shine::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
       transform: translateX(-100%);
-      transition: transform 0.7s ease;
+      transition: transform 0.8s ease;
     }
-    .btn-shine:hover::after {
+    .btn-tech:hover::after, .btn-shine:hover::after {
       transform: translateX(100%);
     }
     /* Card Elevation & Border Glow */
-    .card-premium {
-      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    .card-tech, .card-premium {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(15, 23, 42, 0.05);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .card-premium:hover {
-      transform: translateY(-8px);
+    .card-tech:hover, .card-premium:hover {
+      transform: translateY(-6px);
       border-color: rgba(245, 154, 27, 0.3);
+      box-shadow: 0 15px 35px rgba(245, 154, 27, 0.06), 0 5px 15px rgba(0, 0, 0, 0.01);
     }
     /* Icon Float Animation */
     .icon-float {
@@ -125,8 +143,39 @@
     }
     /* Subtle Gradient Overlays */
     .gradient-overlay {
-      background: radial-gradient(circle at top right, rgba(245, 154, 27, 0.18), transparent 35%),
-                  radial-gradient(circle at bottom left, rgba(6, 43, 95, 0.12), transparent 35%);
+      background: radial-gradient(circle at top right, rgba(245, 154, 27, 0.12), transparent 45%),
+                  radial-gradient(circle at bottom left, rgba(15, 23, 42, 0.08), transparent 45%);
+    }
+    /* Glow Tecnológico de Fondo */
+    .glow-orb {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245, 154, 27, 0.08) 0%, transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 1;
+    }
+    /* Form Inputs Modern Glow */
+    #diagnostico-form input,
+    #diagnostico-form select,
+    #diagnostico-form textarea,
+    #contact-form input,
+    #contact-form select,
+    #contact-form textarea {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #diagnostico-form input:focus,
+    #diagnostico-form select:focus,
+    #diagnostico-form textarea:focus,
+    #contact-form input:focus,
+    #contact-form select:focus,
+    #contact-form textarea:focus {
+      background-color: #ffffff !important;
+      border-color: #F59A1B !important;
+      box-shadow: 0 0 0 4px rgba(245, 154, 27, 0.12) !important;
+      transform: translateY(-1px);
     }
   </style>
 <!-- Google Analytics -->
@@ -227,10 +276,14 @@
   <main class="pt-20">
     
     <!-- ==================== PÁGINA 1: INICIO ==================== -->
-    <div id="inicio" class="page-section active">
+    <div id="inicio" class="page-section active relative">
       
       <!-- Hero Section -->
       <section class="relative bg-brand-cream overflow-hidden">
+        <!-- Orbes de luz tecnológica decorativos en el fondo -->
+        <div class="glow-orb -top-20 -right-20"></div>
+        <div class="glow-orb top-1/2 -left-40" style="background: radial-gradient(circle, rgba(15, 23, 42, 0.06) 0%, transparent 70%);"></div>
+        
         <div class="absolute inset-0 gradient-overlay pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10">
           <div class="text-center max-w-4xl mx-auto">
@@ -785,8 +838,11 @@
     </div>
 
     <!-- ==================== PÁGINA 5: DIAGNÓSTICO GRATUITO ==================== -->
-    <div id="diagnostico" class="page-section">
-      <section class="bg-brand-cream py-20 border-b border-white/10">
+    <div id="diagnostico" class="page-section relative overflow-hidden">
+      <!-- Orbe de luz tecnológica decorativo en el fondo -->
+      <div class="glow-orb top-1/4 -right-20"></div>
+      
+      <section class="bg-brand-cream py-20 border-b border-white/10 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 class="text-4xl font-bold text-brand-blue mb-4">Diagnóstico de Crecimiento Gratuito</h1>
           <p class="text-lg text-brand-slate max-w-2xl mx-auto">Descubre el potencial de crecimiento de tu negocio. Recibe un diagnóstico gratuito donde analizaremos tu negocio y detectaremos oportunidades para ayudarte a crecer física y digitalmente.</p>
@@ -843,8 +899,11 @@
     </div>
 
     <!-- ==================== PÁGINA 6: CONTACTO ==================== -->
-    <div id="contacto" class="page-section">
-      <section class="relative bg-brand-cream py-20 border-b border-white/10 overflow-hidden">
+    <div id="contacto" class="page-section relative overflow-hidden">
+      <!-- Orbe de luz tecnológica decorativo en el fondo -->
+      <div class="glow-orb top-1/4 -left-20"></div>
+      
+      <section class="relative bg-brand-cream py-20 border-b border-white/10 overflow-hidden relative z-10">
         <div class="absolute inset-0 gradient-overlay pointer-events-none"></div>
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 class="text-4xl font-bold text-brand-blue mb-4">Contacto</h1>
